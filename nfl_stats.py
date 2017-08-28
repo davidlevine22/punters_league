@@ -18,7 +18,7 @@ season = range(1,3)
 
 #print("Week, Owner, Punter, Team, Punts, Punt Yards, Blocks, Touchbacks, Fair Catches, Out-of_Bounds, 50+, 60+, 70+, Under 20, Under 10, Under 5, 1 Yd Line, Returns, Return Yards")
 
-with open('weekly_data_2017/league_data.csv', "wb") as data_csv:
+with open('data/season_201718.csv', "wb") as data_csv:
     outputWriter = csv.writer(data_csv, delimiter=',')
     header_row = list()
     header_row.append("Week")
