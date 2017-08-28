@@ -1,0 +1,65 @@
+Week,Owner,Punter,Team,Punts,Punt Yards,Blocks,Touchbacks,Fair Catches,Out-of_Bounds,50+,60+,70+,Under 20,Under 10,Under 5,1 Yd Line,Returns,Return Yards
+1,Free Agent,A.Lee,CAR,4,252,0,2,0,0,4,2,1,0,0,0,0,2,26
+1,Free Agent,R.Dixon,DEN,3,140,0,0,0,0,1,0,0,0,0,0,0,2,12
+1,Connor,M.Bosher,ATL,5,193,0,0,4,0,0,0,0,4,2,0,0,0,0
+1,Kane,B.Anger,TB,5,247,0,0,3,0,3,0,0,2,1,0,0,2,22
+1,Free Agent,S.Koch,BAL,3,128,0,0,1,1,0,0,0,0,0,0,0,1,21
+1,Free Agent,C.Schmidt,BUF,7,313,0,1,1,3,1,0,0,3,2,0,0,2,1
+1,Free Agent,S.Lechler,HOU,5,243,0,0,1,0,2,1,0,1,0,0,0,4,40
+1,David,P.O'Donnell,CHI,7,296,0,0,4,0,0,0,0,2,1,0,0,3,29
+1,Bandit,B.Nortman,JAC,2,125,0,0,0,0,2,1,0,2,2,2,0,0,0
+1,Free Agent,J.Schum,GB,4,184,0,0,1,2,1,0,0,0,0,0,0,1,14
+1,Julian,D.Colquitt,KC,5,197,0,1,0,0,1,0,0,1,1,0,0,2,8
+1,Free Agent,D.Kaser,SD,5,178,0,0,0,1,0,0,0,0,0,0,0,4,35
+1,Ralph,M.King,OAK,4,199,0,1,0,0,2,1,0,1,1,1,0,2,11
+1,Free Agent,T.Morstead,NO,2,95,0,0,0,0,1,0,0,1,0,0,0,2,16
+1,Free Agent,K.Huber,CIN,3,144,0,0,0,1,2,0,0,1,0,0,0,2,11
+1,Free Agent,L.Edwards,NYJ,3,154,0,0,1,0,2,0,0,1,1,0,0,2,21
+1,Fed,B.Colquitt,CLE,5,251,0,0,1,0,2,0,0,0,0,0,0,4,59
+1,Free Agent,D.Jones,PHI,6,295,0,3,1,0,2,2,1,3,2,1,1,0,0
+1,Gillen,B.Kern,TEN,5,231,0,1,1,0,2,1,0,1,0,0,0,3,21
+1,Free Agent,J.Locke,MIN,3,113,0,0,2,0,1,0,0,1,0,0,0,1,14
+1,Free Agent,J.Ryan,SEA,6,253,0,0,2,0,1,0,0,2,0,0,0,4,32
+1,Free Agent,M.Darr,MIA,7,327,0,1,3,0,2,0,0,3,0,0,0,3,40
+1,Free Agent,B.Wing,NYG,5,257,0,3,0,0,4,1,0,0,0,0,0,2,16
+1,Free Agent,C.Jones,DAL,3,147,0,0,2,1,1,0,0,1,0,0,0,4,47
+1,Looney,S.Martin,DET,4,235,0,0,1,1,4,1,0,2,1,0,0,2,13
+1,Free Agent,P.McAfee,IND,4,195,0,1,0,2,1,0,0,1,0,0,0,1,-1
+1,Free Agent,D.Butler,ARI,5,180,0,0,3,0,0,0,0,2,1,0,0,2,18
+1,Miles,R.Allen,NE,2,89,0,0,1,0,0,0,0,0,0,0,0,1,8
+1,Free Agent,T.Way,WAS,1,27,0,0,1,0,0,0,0,1,0,0,0,0,0
+1,Free Agent,J.Berry,PIT,2,107,0,0,1,0,1,1,0,0,0,0,0,1,17
+1,Free Agent,B.Pinion,SF,7,319,0,0,3,0,3,0,0,1,1,0,0,4,38
+1,Free Agent,J.Hekker,LA,10,431,0,0,7,1,2,0,0,4,0,0,0,2,11
+2,Free Agent,C.Schmidt,BUF,3,118,0,0,1,1,0,0,0,1,0,0,0,0,0
+2,Free Agent,L.Edwards,NYJ,2,82,0,0,1,0,0,0,0,1,0,0,0,1,8
+2,Free Agent,A.Lee,CAR,3,123,0,0,2,0,0,0,0,3,1,1,0,0,0
+2,Free Agent,B.Pinion,SF,7,318,0,0,3,0,4,0,0,4,1,0,0,3,28
+2,Free Agent,S.Koch,BAL,3,141,0,0,0,1,2,1,0,2,0,0,0,2,13
+2,Free Agent,B.Colquitt,CLE,5,226,0,0,2,0,1,0,0,2,1,1,0,2,22
+2,Fed,S.Martin,DET,5,217,0,0,2,1,1,0,0,5,2,0,0,1,9
+2,Gillen,B.Kern,TEN,3,142,0,0,0,0,2,0,0,1,1,1,1,2,23
+2,Julian,D.Colquitt,KC,6,285,0,0,2,0,2,0,0,3,1,0,0,4,12
+2,Free Agent,S.Lechler,HOU,5,249,0,0,0,1,1,1,0,1,0,0,0,4,63
+2,Free Agent,M.Darr,MIA,4,199,0,0,1,0,2,0,0,0,0,0,0,3,33
+2,Miles,R.Allen,NE,4,128,0,0,1,0,0,0,0,2,0,0,0,0,0
+2,Free Agent,T.Morstead,NO,7,383,0,3,0,2,5,1,0,3,0,0,0,1,9
+2,Free Agent,B.Wing,NYG,2,116,0,0,0,0,2,1,0,0,0,0,0,2,27
+2,Free Agent,J.Berry,PIT,8,377,0,1,3,1,2,0,0,5,3,0,0,3,19
+2,Free Agent,K.Huber,CIN,9,407,0,0,2,2,3,0,0,3,2,0,0,5,45
+2,Free Agent,T.Way,WAS,2,75,0,0,0,1,0,0,0,1,1,0,0,1,7
+2,Free Agent,C.Jones,DAL,3,142,0,0,0,0,2,0,0,1,0,0,0,2,30
+2,Free Agent,D.Butler,ARI,6,279,0,0,1,0,2,0,0,3,1,0,0,5,43
+2,David,B.Anger,TB,6,282,0,1,3,0,3,0,0,3,1,0,0,1,7
+2,Free Agent,J.Ryan,SEA,7,309,0,1,1,1,2,0,0,2,1,0,0,3,15
+2,Free Agent,J.Hekker,LA,6,237,0,0,6,0,1,0,0,6,1,0,0,0,0
+2,Free Agent,P.McAfee,IND,4,226,0,1,0,1,4,1,1,1,0,0,0,2,26
+2,Free Agent,R.Dixon,DEN,2,98,0,1,1,0,1,0,0,1,0,0,0,0,0
+2,Connor,M.Bosher,ATL,3,132,0,1,1,0,1,1,0,1,1,0,0,1,0
+2,Ralph,M.King,OAK,4,211,0,0,1,0,3,1,0,3,2,0,0,2,74
+2,Kane,B.Nortman,JAX,4,179,0,0,0,0,1,0,0,2,1,0,0,2,21
+2,Free Agent,D.Kaser,SD,4,173,0,0,1,1,1,0,0,2,0,0,0,2,9
+2,Free Agent,J.Locke,MIN,7,273,0,0,5,0,1,0,0,5,1,0,0,1,2
+2,Free Agent,J.Schum,GB,5,193,0,0,3,1,0,0,0,1,0,0,0,0,0
+2,Bandit,P.O'Donnell,CHI,4,151,0,0,3,0,1,0,0,1,0,0,0,0,0
+2,Free Agent,D.Jones,PHI,5,218,0,0,3,0,2,0,0,1,1,1,0,1,65
