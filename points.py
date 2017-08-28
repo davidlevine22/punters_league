@@ -37,8 +37,8 @@ def run_points(year):
             Fair_Catches_Points = .25
             Out_of_Bounds_Points = .15
             Fifty_Points = 1
-            Sixty_Points = 1.25
-            Seventy_Points = 1.5
+            Sixty_Points = .75
+            Seventy_Points = .5
             Under_20_Points = 1
             Under_10_Points = .75
             Under_5_Points = .5
