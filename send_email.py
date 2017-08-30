@@ -34,9 +34,6 @@ def send_email(weeks, year):
      password = open("password.txt", "r+")
      password = [i.strip() for i in password.readlines()]
      password = ''.join(password)
-     #password = 'jzuweowtblireqro'
-     #print password
-
 
      # Create message container.
      msgRoot = MIMEMultipart('related')
