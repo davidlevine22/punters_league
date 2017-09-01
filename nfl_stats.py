@@ -50,7 +50,7 @@ def run_stats_import(week_number, year):
 
         for week in week_number:
             try:
-                file = "roster/week{week_number}.txt".format(week_number=week)
+                file = "roster/{year_number}/week{week_number}.txt".format(week_number=week, year_number = year)
                 #print file
                 f = open(file,"r")
                 owner_set = eval(f.read())

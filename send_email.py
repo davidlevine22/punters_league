@@ -168,11 +168,13 @@ def send_email(weeks, year):
           else:
                continue
 
-     read_file = 'data/season/season_{year}.csv'.format(year=year_string)
-     with open(read_file, "rb") as read_csv:
-          reader = csv.reader(read_csv)
+     open_file = 'data/season/season_{year}.csv'.format(year=year_string)
+     with open(open_file, "rb") as data_csv:
+          writer = csv.reader(data_csv)
           #headers = reader.next()
-          next(reader)
+          next(writer)
+
+     #open_csv.close()
           worksheet_name = 'Season Stats'
           worksheet = workbook.add_worksheet(worksheet_name)
           xrow = 0
@@ -203,7 +205,9 @@ def send_email(weeks, year):
           worksheet.write(xrow, xcol+18, "RY", stats_integer_header_format)
           worksheet.freeze_panes(1,0)
           xrow = 1
-          for a in reader:
+          new_data_set = []
+          for a in writer:
+               #print a
                row_integer = workbook.add_format()
                row_integer.set_num_format('#,##0')
                row_integer.set_align('center')
@@ -230,6 +234,76 @@ def send_email(weeks, year):
                worksheet.write(xrow, xcol+16, int(a[16]), row_integer)
                worksheet.write(xrow, xcol+17, int(a[17]), row_integer)
                worksheet.write(xrow, xcol+18, int(a[18]), row_integer)
+               xrow = xrow + 1
+               #print a
+               new_data_set.append(a)
+
+    #read_csv.close()
+          #print data_set
+
+          data_frame = pd.DataFrame(new_data_set).convert_objects(convert_numeric=True)
+          data_frame = data_frame[data_frame[0] <= max(weeks)]
+          data_frame[3].replace(["JAC"],["JAX"],inplace=True)
+          #result_base = list(map(tuple, df.itertuples(index=True)))
+          #print data_frame[data_frame[3] == "B.Nortman",]
+          data_result = data_frame.groupby([2,3], as_index=False).sum()
+          data_result = list(map(tuple, data_result.itertuples(index=True)))
+          #print data_result
+
+          worksheet_name = 'Punter Stats'
+          worksheet = workbook.add_worksheet(worksheet_name)
+          xrow = 0
+          xrow = 0
+          punter_integer_header_format = worksheet.set_column('C:S', 10, integer)
+          punter_owner_header_format = worksheet.set_column('A:A', 11, rank)
+          punter_team_header_format = worksheet.set_column('B:B', 7, rank)
+          worksheet.write(xrow, xcol, "Punter", punter_owner_header_format)
+          worksheet.write(xrow, xcol+1, "Team", punter_team_header_format)
+          worksheet.write(xrow, xcol+2, "Punts", punter_integer_header_format)
+          worksheet.write(xrow, xcol+3, "Yards", punter_integer_header_format)
+          worksheet.write(xrow, xcol+4, "Blocks", punter_integer_header_format)
+          worksheet.write(xrow, xcol+5, "TB", punter_integer_header_format)
+          worksheet.write(xrow, xcol+6, "FC", punter_integer_header_format)
+          worksheet.write(xrow, xcol+7, "OB", punter_integer_header_format)
+          worksheet.write(xrow, xcol+8, "50+", punter_integer_header_format)
+          worksheet.write(xrow, xcol+9, "60+", punter_integer_header_format)
+          worksheet.write(xrow, xcol+10, "70+", punter_integer_header_format)
+          worksheet.write(xrow, xcol+11, "Under 20", punter_integer_header_format)
+          worksheet.write(xrow, xcol+12, "Under 10", punter_integer_header_format)
+          worksheet.write(xrow, xcol+13, "Under 5", punter_integer_header_format)
+          worksheet.write(xrow, xcol+14, "1 Yd Line", punter_integer_header_format)
+          worksheet.write(xrow, xcol+15, "Returns", punter_integer_header_format)
+          worksheet.write(xrow, xcol+16, "RY", punter_integer_header_format)
+          worksheet.freeze_panes(1,0)
+
+          xrow = 1
+          data_result = sorted(data_result, key=lambda x: x[1])
+          for a in data_result:
+               #print a
+               punter_row_integer = workbook.add_format()
+               punter_row_integer.set_num_format('#,##0')
+               punter_row_integer.set_align('center')
+               punter_row_player = workbook.add_format()
+               punter_row_player.set_align('center')
+               punter_row_rank = workbook.add_format()
+               punter_row_rank.set_align('center')
+               worksheet.write(xrow, xcol, a[1], punter_row_rank)
+               worksheet.write(xrow, xcol + 1, a[2], punter_row_player)
+               worksheet.write(xrow, xcol+2, int(a[4]), punter_row_player)
+               worksheet.write(xrow, xcol+3, int(a[5]), punter_row_player)
+               worksheet.write(xrow, xcol+4, int(a[6]), punter_row_integer)
+               worksheet.write(xrow, xcol+5, int(a[7]), punter_row_integer)
+               worksheet.write(xrow, xcol+6, int(a[8]), punter_row_integer)
+               worksheet.write(xrow, xcol+7, int(a[9]), punter_row_integer)
+               worksheet.write(xrow, xcol+8, int(a[10]), punter_row_integer)
+               worksheet.write(xrow, xcol+9, int(a[11]), punter_row_integer)
+               worksheet.write(xrow, xcol+10, int(a[12]), punter_row_integer)
+               worksheet.write(xrow, xcol+11, int(a[13]), punter_row_integer)
+               worksheet.write(xrow, xcol+12, int(a[14]), punter_row_integer)
+               worksheet.write(xrow, xcol+13, int(a[15]), punter_row_integer)
+               worksheet.write(xrow, xcol+14, int(a[16]), punter_row_integer)
+               worksheet.write(xrow, xcol+15, int(a[17]), punter_row_integer)
+               worksheet.write(xrow, xcol+16, int(a[18]), punter_row_integer)
                xrow = xrow + 1
 
      #weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
@@ -344,5 +418,3 @@ def send_email(weeks, year):
 
      server.quit()
 
-
-     print "Email Sent"
