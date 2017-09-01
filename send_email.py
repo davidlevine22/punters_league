@@ -14,9 +14,10 @@ from email import encoders
 import pandas
 import csv
 import pandas as pd
+from html import *
 
 
-def send_email(weeks, year):
+def send_email(weeks, year, message):
 
      def right(s, amount):
              return s[-amount:]
@@ -29,7 +30,6 @@ def send_email(weeks, year):
 
      FROM = 'davidlevine22@gmail.com'
      TO  = ['davidlevine@iheartmedia.com']
-     message = 'Why,Oh why!'
      username = 'davidlevine22'
      password = open("password.txt", "r+")
      password = [i.strip() for i in password.readlines()]
@@ -47,7 +47,7 @@ def send_email(weeks, year):
      parser.add_option("-p", "--pdf", dest="pdf", help="pdf attachment", default=False)
      (options, args) = parser.parse_args()
 
-     SUBJECT = "Test"
+     SUBJECT = "Punters League {year_number} - Week {week_number} Update".format(year_number = year, week_number = max(weeks))
 
      text_body = ''
 
@@ -414,7 +414,7 @@ def send_email(weeks, year):
      server.ehlo()
      server.starttls()
      server.login(username,password)
-     #server.sendmail(FROM, TO, msgRoot.as_string())
+     server.sendmail(FROM, TO, msgRoot.as_string())
 
      server.quit()
 
