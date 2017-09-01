@@ -24,6 +24,6 @@ print "Stats Processing in " + str(round(process_points_time - import_done_time,
 
 send_email(week_season, season)
 send_email_time = time.time()
-print "Stats Processing in " + str(round(send_email_time - process_points_time,2)) + " seconds."
+print "Send Email in " + str(round(send_email_time - process_points_time,2)) + " seconds."
 print
 print "Script Complete in " + str(round(time.time() - start,2)) + "seconds."
