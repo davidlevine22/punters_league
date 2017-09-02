@@ -2,7 +2,7 @@
              'David': "B.Anger",
              'Gillen': 'B.Kern',
              'Fed': 'S.Martin',
-             'Looney': 'B.Colquit',
+             'Looney': 'B.Colquitt',
              'Miles': 'R.Allen',
              'Ralph': 'M.King',
              'Connor': 'M.Bosher',

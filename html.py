@@ -28,7 +28,7 @@ def html_body(week, year):
         #next(reader)
               #
         for line in reader:
-        #print line
+            #print line
             data_set.append(line)
             season_data_set.append(line)
 
@@ -45,15 +45,16 @@ def html_body(week, year):
     result = df.groupby([1,2], as_index=False).sum()
     result = list(map(tuple, result.itertuples(index=True)))
     result = sorted(result, key=lambda x: x[17], reverse=True)
-    season_result = season_df.groupby([1,2], as_index=False).sum()
+    season_result = season_df.groupby([1], as_index=False).sum()
     season_result = list(map(tuple, season_result.itertuples(index=True)))
-    season_result = sorted(season_result, key=lambda x: x[17], reverse=True)
+    season_result = sorted(season_result, key=lambda x: x[16], reverse=True)
     #print season_result
     #img = open("output\image.png", 'rb').read()
-
     weekly_standings = []
     weekly_rank = 1
+    weekly_player_punt = []
     for a in result:
+        player_punt = []
         player_list = []
         if a[1] <> "Free Agent":
             #a[]
@@ -66,30 +67,31 @@ def html_body(week, year):
             player_list.append(points)
             weekly_standings.append(player_list)
             weekly_rank = weekly_rank + 1
-
-    season_standings = []
-    season_rank = 1
-    player_punt = []
-    for b in season_result:
-        season_player_list = []
-        weekly_player_punt = []
-        if b[1] <> "Free Agent":
-            #a[]
-            owner = b[1]
-            punter = b[2]
-            points = b[17]
-            season_player_list.append(season_rank)
-            season_player_list.append(owner)
-            season_player_list.append(punter)
-            season_player_list.append(points)
             player_punt.append(owner)
             player_punt.append(punter)
             weekly_player_punt.append(player_punt)
 
+    owner_player_dictionary = {key: value for (key, value) in weekly_player_punt}
+    #print owner_player_dictionary
+    season_standings = []
+    season_rank = 1
+
+    for b in season_result:
+        season_player_list = []
+        if b[1] <> "Free Agent":
+            #a[]
+            owner = b[1]
+            #punter = b[2]
+            points = b[16]
+            season_player_list.append(season_rank)
+            season_player_list.append(owner)
+            season_player_list.append(owner_player_dictionary.get(owner, "Missing Label"))
+            season_player_list.append(points)
+
             season_standings.append(season_player_list)
             season_rank = season_rank + 1
 
-    #print weekly_player_punt
+
 
     def this_week(rank, variable):
         x = 0 if variable == "Rank" else 1 if variable == "Owner" else 2 if variable == "Punter" else 3 if variable == "Points" else 1
@@ -209,7 +211,7 @@ def html_body(week, year):
 
                         <tr><td bgcolor="#FF4500" width="120" style="width=90px"><center><font color="white">Rank</font></center></td>
                             <td bgcolor="#FF4500" width="120" style="width=90px"><center><font color="white">Owner</font></center></td>
-                            <td bgcolor="#FF4500" width="155" style="width=90px"><center><font color="white">Punter</font></center></td>
+                            <td bgcolor="#FF4500" width="155" style="width=90px"><center><font color="white">Current Punter</font></center></td>
                             <td bgcolor="#FF4500" width="115" style="width=90px"><center><font color="white">Points</font></center></td>
                         </tr>
 
@@ -384,3 +386,4 @@ def html_body(week, year):
     #webbrowser.open_new_tab('table.html')
 
 #
+#html_body(range(1,5), 2016)
