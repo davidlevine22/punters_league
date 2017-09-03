@@ -123,7 +123,7 @@ def html_body(week, year):
 
                     </style></head>
                     <body>
-                        If you are recieving this email, it's likely that other people question your life choices.
+                        If you are receiving this email, it's likely that other people question your life choices.
                         <br>
                         <br>
                         <table width="510" style="width=500px;">
