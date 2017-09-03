@@ -1,2 +1,2 @@
 # punters_league
-welcome to the future
+welcome to the future... of {boring}.

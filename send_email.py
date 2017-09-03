@@ -89,7 +89,7 @@ def send_email(weeks, year, message):
      result = df.groupby([1]).sum()
      result = list(map(tuple, result.itertuples(index=True)))
 
-     workbook_name = 'data/{year}_standings.xlsx'.format(year=year_string)
+     workbook_name = 'data/weekly_update/{year}/{year}_week_{week}_standings.xlsx'.format(year=year, week=max(weeks))
      #frame_writer = pd.ExcelWriter(workbook_name, engine='xlsxwriter')
      workbook = xlsxwriter.Workbook(workbook_name)
 
@@ -175,7 +175,7 @@ def send_email(weeks, year, message):
           next(writer)
 
      #open_csv.close()
-          worksheet_name = 'Season Stats'
+          worksheet_name = 'Weekly Stats'
           worksheet = workbook.add_worksheet(worksheet_name)
           xrow = 0
           xrow = 0

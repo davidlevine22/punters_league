@@ -121,10 +121,11 @@ def html_body(week, year):
                         border: 2px solid black;
                     }}
 
-                    If you are recieving this email, it's likely that other people question your life choices.
-
                     </style></head>
                     <body>
+                        If you are recieving this email, it's likely that other people question your life choices.
+                        <br>
+                        <br>
                         <table width="510" style="width=500px;">
                         <col width="510" style="width=500px;">
                         <tr><th bgcolor="#228B22" height = "50"><center><font color="white">Punters League {year_number} <br> Week {week_number} Update</font></center></th></tr>
