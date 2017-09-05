@@ -8,15 +8,15 @@ start = time.time()
 print "It has begun."
 
 season = 2016
-week_season = range(1,5)
+week_season = range(1,17)
 
-#run_stats_import(week_season, season)
+run_stats_import(week_season, season)
 import_done_time = time.time()
 print "Import Process Complete in " + str(round(import_done_time - start,2)) + " seconds."
 
 #time.sleep(1)
 
-#run_points(season)
+run_points(season)
 process_points_time = time.time()
 print "Stats Processing in " + str(round(process_points_time - import_done_time,2)) + " seconds."
 
