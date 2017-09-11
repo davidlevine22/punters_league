@@ -43,6 +43,8 @@ def run_points(year):
             Under_10_Points = .75
             Under_5_Points = .5
             Yd_Line_Points = .25
+            holds_points = .1
+            miss_points = -.5
             #Returns_Avg_Points = 0
 
             outputWriter = csv.writer(write_csv, delimiter=',')
@@ -65,6 +67,8 @@ def run_points(year):
             header_row.append("1 Yd Line")
             header_row.append("Punt Avg")
             header_row.append("Return Avg")
+            header_row.append("Holds")
+            header_row.append("Misses")
             header_row.append("Total Points")
 
             outputWriter.writerow(header_row)
@@ -92,6 +96,8 @@ def run_points(year):
                 under_2 = line[16]
                 returns = line[17]
                 return_yards = line[18]
+                holds = line[19]
+                misses = line[20]
                 #print line
 
                 total_points = int(blocks)*Block_Points + \
@@ -106,7 +112,10 @@ def run_points(year):
                                int(under_5)*Under_5_Points + \
                                int(under_2)*Yd_Line_Points + \
                                Punt_Avg(int(punt_yards), int(punts)) + \
-                               Return_Avg(int(return_yards), int(returns))
+                               Return_Avg(int(return_yards), int(returns)) + \
+                               int(holds)*holds_points + \
+                               int(misses)*miss_points
+
 
                 csv_data = list()
                 #Convert date to string
@@ -127,6 +136,8 @@ def run_points(year):
                 csv_data.append(int(under_2)*Yd_Line_Points)
                 csv_data.append(Punt_Avg(int(punt_yards), int(punts)))
                 csv_data.append(Return_Avg(int(return_yards), int(returns)))
+                csv_data.append(int(holds)*holds_points)
+                csv_data.append(int(misses)*miss_points)
                 csv_data.append(total_points)
 
                 outputWriter.writerow(csv_data)

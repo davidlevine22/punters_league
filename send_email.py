@@ -104,7 +104,7 @@ def send_email(weeks, year, message):
      integer.set_num_format('#,##0.00')
      integer.set_align('center')
      integer.set_bold()
-     integer_header_format = worksheet.set_column('C:P', 10, integer)
+     integer_header_format = worksheet.set_column('C:R', 10, integer)
      player = workbook.add_format()
      player.set_align('center')
      player.set_bold()
@@ -132,7 +132,9 @@ def send_email(weeks, year, message):
      worksheet.write(xrow, xcol + 12, "1 Yd Line",integer_header_format)
      worksheet.write(xrow, xcol + 13, "Punt Avg",integer_header_format)
      worksheet.write(xrow, xcol + 14, "Return Avg",integer_header_format)
-     worksheet.write(xrow, xcol + 15, "Total Points",integer_header_format)
+     worksheet.write(xrow, xcol + 15, "Holds",integer_header_format)
+     worksheet.write(xrow, xcol + 16, "Misses",integer_header_format)
+     worksheet.write(xrow, xcol + 17, "Total Points",integer_header_format)
      worksheet.freeze_panes(1,0)
 
      xrow = 1
@@ -163,6 +165,8 @@ def send_email(weeks, year, message):
                worksheet.write(xrow, xcol + 13, i[13],row_integer)
                worksheet.write(xrow, xcol + 14, i[14],row_integer)
                worksheet.write(xrow, xcol + 15, i[15],row_integer)
+               worksheet.write(xrow, xcol + 16, i[16],row_integer)
+               worksheet.write(xrow, xcol + 17, i[17],row_integer)
                xrow = xrow + 1
                rank_order = rank_order + 1
           else:
@@ -180,7 +184,7 @@ def send_email(weeks, year, message):
           xrow = 0
           xrow = 0
           #
-          stats_integer_header_format = worksheet.set_column('E:S', 10, integer)
+          stats_integer_header_format = worksheet.set_column('E:U', 10, integer)
           stats_rank_header_format = worksheet.set_column('A:A', 7, rank)
           stats_owner_header_format = worksheet.set_column('B:C', 11, rank)
           stats_team_header_format = worksheet.set_column('D:D', 7, rank)
@@ -203,6 +207,8 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol+16, "1 Yd Line", stats_integer_header_format)
           worksheet.write(xrow, xcol+17, "Returns", stats_integer_header_format)
           worksheet.write(xrow, xcol+18, "RY", stats_integer_header_format)
+          worksheet.write(xrow, xcol+19, "Holds", stats_integer_header_format)
+          worksheet.write(xrow, xcol+20, "Misses", stats_integer_header_format)
           worksheet.freeze_panes(1,0)
           xrow = 1
           new_data_set = []
@@ -234,6 +240,8 @@ def send_email(weeks, year, message):
                worksheet.write(xrow, xcol+16, int(a[16]), row_integer)
                worksheet.write(xrow, xcol+17, int(a[17]), row_integer)
                worksheet.write(xrow, xcol+18, int(a[18]), row_integer)
+               worksheet.write(xrow, xcol+19, int(a[19]), row_integer)
+               worksheet.write(xrow, xcol+20, int(a[20]), row_integer)
                xrow = xrow + 1
                #print a
                new_data_set.append(a)
@@ -274,6 +282,9 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol+14, "1 Yd Line", punter_integer_header_format)
           worksheet.write(xrow, xcol+15, "Returns", punter_integer_header_format)
           worksheet.write(xrow, xcol+16, "RY", punter_integer_header_format)
+          worksheet.write(xrow, xcol+17, "Holds", punter_integer_header_format)
+          worksheet.write(xrow, xcol+18, "Misses", punter_integer_header_format)
+
           worksheet.freeze_panes(1,0)
 
           xrow = 1
@@ -304,6 +315,8 @@ def send_email(weeks, year, message):
                worksheet.write(xrow, xcol+14, int(a[16]), punter_row_integer)
                worksheet.write(xrow, xcol+15, int(a[17]), punter_row_integer)
                worksheet.write(xrow, xcol+16, int(a[18]), punter_row_integer)
+               worksheet.write(xrow, xcol+17, int(a[19]), punter_row_integer)
+               worksheet.write(xrow, xcol+18, int(a[20]), punter_row_integer)
                xrow = xrow + 1
 
      #weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
@@ -314,7 +327,7 @@ def send_email(weeks, year, message):
           xrow = 0
           worksheet_name = 'Week {week}'.format(week=str(week))
           worksheet = workbook.add_worksheet(worksheet_name)
-          week_integer_header_format = worksheet.set_column('E:R', 10, integer)
+          week_integer_header_format = worksheet.set_column('E:T', 10, integer)
           week_rank_header_format = worksheet.set_column('A:A', 5, rank)
           week_owner_header_format = worksheet.set_column('B:C', 11, rank)
           week_team_header_format = worksheet.set_column('D:D', 7, rank)
@@ -336,6 +349,8 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol + 15, headers[15], week_integer_header_format)
           worksheet.write(xrow, xcol + 16, headers[16], week_integer_header_format)
           worksheet.write(xrow, xcol + 17, headers[17], week_integer_header_format)
+          worksheet.write(xrow, xcol + 18, headers[18], week_integer_header_format)
+          worksheet.write(xrow, xcol + 19, headers[19], week_integer_header_format)
           worksheet.freeze_panes(1,0)
           xrow=1
           rank_num = 1
@@ -361,7 +376,9 @@ def send_email(weeks, year, message):
                     Yd_Line = line[14]
                     Punt_Avg = line[15]
                     Return_Avg = line[16]
-                    Total_Points = line[17]
+                    Holds = line[17]
+                    Misses = line[18]
+                    Total_Points = line[19]
                     row_integer = workbook.add_format()
                     row_integer.set_num_format('#,##0.00')
                     row_integer.set_align('center')
@@ -387,7 +404,9 @@ def send_email(weeks, year, message):
                     worksheet.write(xrow, xcol + 14, float(Yd_Line), row_integer)
                     worksheet.write(xrow, xcol + 15, float(Punt_Avg), row_integer)
                     worksheet.write(xrow, xcol + 16, float(Return_Avg), row_integer)
-                    worksheet.write(xrow, xcol + 17, float(Total_Points), row_integer)
+                    worksheet.write(xrow, xcol + 17, float(Holds), row_integer)
+                    worksheet.write(xrow, xcol + 18, float(Misses), row_integer)
+                    worksheet.write(xrow, xcol + 19, float(Total_Points), row_integer)
                     xrow = xrow + 1
                     rank_num = rank_num + 1
 

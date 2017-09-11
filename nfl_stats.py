@@ -51,7 +51,7 @@ def run_stats_import(week_number, year):
         outputWriter.writerow(header_row)
 
         for week in week_number:
-            print week
+            print "Week: " + str(week)
             try:
                 file = "roster/{year_number}/week{week_number}.txt".format(week_number=week, year_number = year)
                 #print file
