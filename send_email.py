@@ -24,12 +24,13 @@ def send_email(weeks, year, message):
 
      #Create Email Connection & Body
      SERVER = "smtplib.SMTP('smtp.gmail.com:587')"
-     #distro = open("exec_distro.txt", "r+")
-     #mailList = [i.strip() for i in distro.readlines()]
+     distro = open("distro/league_distro.txt", "r+")
+     mailList = [i.strip() for i in distro.readlines()]
 
 
      FROM = 'davidlevine22@gmail.com'
-     TO  = ['davidlevine@iheartmedia.com']
+     #TO = mailList
+     TO = ['davidlevine@iheartmedia.com']
      username = 'davidlevine22'
      password = open("password.txt", "r+")
      password = [i.strip() for i in password.readlines()]
