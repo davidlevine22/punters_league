@@ -7,8 +7,8 @@ start = time.time()
 
 print "It has begun."
 
-season = 2015
-week_season = range(1,3)
+season = 2017
+week_season = range(1,2)
 
 run_stats_import(week_season, season)
 import_done_time = time.time()
