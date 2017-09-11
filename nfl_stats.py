@@ -46,9 +46,12 @@ def run_stats_import(week_number, year):
         header_row.append("1 Yd Line")
         header_row.append("Returns")
         header_row.append("Return Yards")
+        header_row.append("Holds")
+        header_row.append("Misses")
         outputWriter.writerow(header_row)
 
         for week in week_number:
+            print week
             try:
                 file = "roster/{year_number}/week{week_number}.txt".format(week_number=week, year_number = year)
                 #print file
@@ -64,6 +67,7 @@ def run_stats_import(week_number, year):
             plays = nflgame.combine_plays(games)
 
             for player in stats.punting():
+                #print week
 
                 punt_name = player
                 team = player.team
@@ -83,6 +87,8 @@ def run_stats_import(week_number, year):
                 punts_over_60 = 0
                 punts_over_70 = 0
                 returns = 0
+                holds = 0
+                misses = 0
 
                 plays = nflgame.combine_plays(games)
                 #play = ''
@@ -123,17 +129,29 @@ def run_stats_import(week_number, year):
                         if "fair catch" in str(punts_string):
                             fair_catch = fair_catch + 1
                         if punt_length >= 50:
-                            punts_over_50 = punts_over_50 = punts_over_50 + 1
+                            punts_over_50 = punts_over_50 + 1
                         if punt_length >= 60:
-                            punts_over_60 = punts_over_60 = punts_over_60 + 1
+                            punts_over_60 = punts_over_60 + 1
                         if punt_length >= 70:
-                            punts_over_70 = punts_over_70 = punts_over_70 + 1
+                            punts_over_70 = punts_over_70 + 1
                         if "out of bounds" not in str(punts_string) and "fair catch" not in str(punts_string) \
                             and touch_back == 0 and "downed" not in str(play):
                             returns = returns + 1
 
+                    elif str(punt_name) in str(play) and ("holder" in str(play) or "Holder" in str(play)) and "No Play" not in str(play):
+                        #print play
+
+                        if "is GOOD" in str(play):
+                            holds = holds + 1
+
+                        elif "is No Good" in str(play):
+                            #print play
+                            misses = misses + 1
+
                     else:
                         continue
+
+                #print str(punt_name) + " Holds: " + str(holds)
 
                 #print return_list
                 total_return_yards = sum(return_list)
@@ -172,6 +190,8 @@ def run_stats_import(week_number, year):
                 csv_data.append(punts_under_2)
                 csv_data.append(returns)
                 csv_data.append(total_return_yards)
+                csv_data.append(holds)
+                csv_data.append(misses)
 
                 outputWriter.writerow(csv_data)
 
