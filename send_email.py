@@ -24,7 +24,8 @@ def send_email(weeks, year, message):
 
      #Create Email Connection & Body
      SERVER = "smtplib.SMTP('smtp.gmail.com:587')"
-     distro = open("distro/league_distro.txt", "r+")
+     distro_list = "distro/{year}/league_distro.txt".format(year=year)
+     distro = open(distro_list, "r+")
      mailList = [i.strip() for i in distro.readlines()]
 
 
@@ -136,10 +137,10 @@ def send_email(weeks, year, message):
      worksheet.write(xrow, xcol + 15, "Holds",integer_header_format)
      worksheet.write(xrow, xcol + 16, "Misses",integer_header_format)
      worksheet.write(xrow, xcol + 17, "Total Points",integer_header_format)
-     worksheet.freeze_panes(1,0)
+     worksheet.freeze_panes(1,2)
 
      xrow = 1
-     result = sorted(result, key=lambda x: x[15], reverse=True)
+     result = sorted(result, key=lambda x: x[17], reverse=True)
      rank_order = 1
      for i in result:
           if i[0] <> "Free Agent":
@@ -210,7 +211,7 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol+18, "RY", stats_integer_header_format)
           worksheet.write(xrow, xcol+19, "Holds", stats_integer_header_format)
           worksheet.write(xrow, xcol+20, "Misses", stats_integer_header_format)
-          worksheet.freeze_panes(1,0)
+          worksheet.freeze_panes(1,3)
           xrow = 1
           new_data_set = []
           for a in writer:
@@ -286,7 +287,7 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol+17, "Holds", punter_integer_header_format)
           worksheet.write(xrow, xcol+18, "Misses", punter_integer_header_format)
 
-          worksheet.freeze_panes(1,0)
+          worksheet.freeze_panes(1,2)
 
           xrow = 1
           data_result = sorted(data_result, key=lambda x: x[1])
@@ -352,10 +353,10 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol + 17, headers[17], week_integer_header_format)
           worksheet.write(xrow, xcol + 18, headers[18], week_integer_header_format)
           worksheet.write(xrow, xcol + 19, headers[19], week_integer_header_format)
-          worksheet.freeze_panes(1,0)
+          worksheet.freeze_panes(1,3)
           xrow=1
           rank_num = 1
-          data_set = sorted(data_set, key=lambda x: float(x[17]), reverse=True)
+          data_set = sorted(data_set, key=lambda x: float(x[19]), reverse=True)
           for line in data_set:
 
                if int(line[0]) == int(week):
@@ -420,7 +421,7 @@ def send_email(weeks, year, message):
      attachment_file.set_payload(fp.read())
      encoders.encode_base64(attachment_file)
      fp.close()
-     attachment_file.add_header("Content-Disposition", "attachment", filename=fileToSend)
+     attachment_file.add_header("Content-Disposition", "attachment", filename="this_week_in_punting.xlsx")
      msgRoot.attach(attachment_file)
 
      # make up message
