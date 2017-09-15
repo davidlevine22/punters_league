@@ -44,10 +44,10 @@ def html_body(week, year):
 
     result = df.groupby([1,2], as_index=False).sum()
     result = list(map(tuple, result.itertuples(index=True)))
-    result = sorted(result, key=lambda x: x[17], reverse=True)
+    result = sorted(result, key=lambda x: x[19], reverse=True)
     season_result = season_df.groupby([1], as_index=False).sum()
     season_result = list(map(tuple, season_result.itertuples(index=True)))
-    season_result = sorted(season_result, key=lambda x: x[16], reverse=True)
+    season_result = sorted(season_result, key=lambda x: x[18], reverse=True)
     #print season_result
     #img = open("output\image.png", 'rb').read()
     weekly_standings = []
@@ -60,7 +60,7 @@ def html_body(week, year):
             #a[]
             owner = a[1]
             punter = a[2]
-            points = a[17]
+            points = a[19]
             player_list.append(weekly_rank)
             player_list.append(owner)
             player_list.append(punter)
@@ -82,7 +82,7 @@ def html_body(week, year):
             #a[]
             owner = b[1]
             #punter = b[2]
-            points = b[16]
+            points = b[18]
             season_player_list.append(season_rank)
             season_player_list.append(owner)
             season_player_list.append(owner_player_dictionary.get(owner, "Missing Label"))
@@ -202,6 +202,36 @@ def html_body(week, year):
                             <td><center>{punter_10}</center></td>
                             <td><center>{points_10}</center></td>
                         </tr>
+                        <tr >
+                            <td><center>11</center></td>
+                            <td><center>{owner_11}</center></td>
+                            <td><center>{punter_11}</center></td>
+                            <td><center>{points_11}</center></td>
+                        </tr>
+                        <tr bgcolor="#F0F0F0">
+                            <td><center>12</center></td>
+                            <td><center>{owner_12}</center></td>
+                            <td><center>{punter_12}</center></td>
+                            <td><center>{points_12}</center></td>
+                        </tr>
+                        <tr >
+                            <td><center>13</center></td>
+                            <td><center>{owner_13}</center></td>
+                            <td><center>{punter_13}</center></td>
+                            <td><center>{points_13}</center></td>
+                        </tr>
+                        <tr bgcolor="#F0F0F0">
+                            <td><center>14</center></td>
+                            <td><center>{owner_14}</center></td>
+                            <td><center>{punter_14}</center></td>
+                            <td><center>{points_14}</center></td>
+                        </tr>
+                        <tr>
+                            <td><center>15</center></td>
+                            <td><center>{owner_15}</center></td>
+                            <td><center>{punter_15}</center></td>
+                            <td><center>{points_15}</center></td>
+                        </tr>
                       </table>
 
                       <br>
@@ -276,6 +306,37 @@ def html_body(week, year):
                             <td><center>{season_punter_10}</center></td>
                             <td><center>{season_points_10}</center></td>
                         </tr>
+                        <tr >
+                            <td><center>11</center></td>
+                            <td><center>{season_owner_11}</center></td>
+                            <td><center>{season_punter_11}</center></td>
+                            <td><center>{season_points_11}</center></td>
+                        </tr>
+                        <tr bgcolor="#F0F0F0">
+                            <td><center>12</center></td>
+                            <td><center>{season_owner_12}</center></td>
+                            <td><center>{season_punter_12}</center></td>
+                            <td><center>{season_points_12}</center></td>
+                        </tr>
+                        <tr>
+                            <td><center>13</center></td>
+                            <td><center>{season_owner_13}</center></td>
+                            <td><center>{season_punter_13}</center></td>
+                            <td><center>{season_points_13}</center></td>
+                        </tr>
+                        <tr bgcolor="#F0F0F0">
+                            <td><center>14</center></td>
+                            <td><center>{season_owner_14}</center></td>
+                            <td><center>{season_punter_14}</center></td>
+                            <td><center>{season_points_14}</center></td>
+                        </tr>
+                        <tr>
+                            <td><center>15</center></td>
+                            <td><center>{season_owner_15}</center></td>
+                            <td><center>{season_punter_15}</center></td>
+                            <td><center>{season_points_15}</center></td>
+                        </tr>
+
                       </table>
 
                     </body>
