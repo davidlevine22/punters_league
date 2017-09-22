@@ -16,7 +16,7 @@ def run_points(year):
 
     def Return_Avg(return_yard, returns):
         try:
-            points = (float(return_yard)/float(returns)-9)*.10
+            points = -(float(return_yard)/float(returns)-9)*.10
             return points
         except:
             points  = 0
