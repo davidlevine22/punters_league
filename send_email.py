@@ -30,8 +30,8 @@ def send_email(weeks, year, message):
 
 
      FROM = 'davidlevine22@gmail.com'
-     #TO = mailList
-     TO = ['davidlevine@iheartmedia.com']
+     TO = mailList
+     #TO = ['davidlevine@iheartmedia.com']
      username = 'davidlevine22'
      password = open("password.txt", "r+")
      password = [i.strip() for i in password.readlines()]
