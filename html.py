@@ -85,7 +85,7 @@ def html_body(week, year):
             points = b[18]
             season_player_list.append(season_rank)
             season_player_list.append(owner)
-            season_player_list.append(owner_player_dictionary.get(owner, "Missing Label"))
+            season_player_list.append(owner_player_dictionary.get(owner, "Bye Week"))
             season_player_list.append(points)
 
             season_standings.append(season_player_list)
@@ -123,7 +123,7 @@ def html_body(week, year):
 
                     </style></head>
                     <body>
-                        <font size=16>His Majesty, the King. </font>
+                        <font size=12>King is God. </font>
                         <br>
                         <br>
                         <table width="510" style="width=500px;">
