@@ -3,7 +3,7 @@ import time
 import re
 import csv
 
-def run_stats_import(week_number, year):
+def run_stats_import(week, year):
 
 
     def left(s, amount):
@@ -15,11 +15,6 @@ def run_stats_import(week_number, year):
     def mid(s, offset, amount):
         return s[offset:offset+amount]
 
-
-    #season = [2]
-    #season = range(1,3)
-
-    #year = 2016
     year_string = str(year)+right(str(year+1),2)
 
     #print("Week, Owner, Punter, Team, Punts, Punt Yards, Blocks, Touchbacks, Fair Catches, Out-of_Bounds, 50+, 60+, 70+, Under 20, Under 10, Under 5, 1 Yd Line, Returns, Return Yards")
@@ -28,7 +23,6 @@ def run_stats_import(week_number, year):
         outputWriter = csv.writer(data_csv, delimiter=',')
         header_row = list()
         header_row.append("Week")
-        header_row.append("Owner")
         header_row.append("Punter")
         header_row.append("Team")
         header_row.append("Punts")
@@ -48,32 +42,31 @@ def run_stats_import(week_number, year):
         header_row.append("Return Yards")
         header_row.append("Holds")
         header_row.append("Misses")
+        header_row.append("First Downs")
+        header_row.append("TD")
+        header_row.append("Fumbles")
+        header_row.append("Int")
+        header_row.append("Conduct")
         outputWriter.writerow(header_row)
 
-        for week in week_number:
-            print "Week: " + str(week)
-            try:
-                file = "roster/{year_number}/week{week_number}.txt".format(week_number=week, year_number = year)
-                #print file
-                f = open(file,"r")
-                owner_set = eval(f.read())
-                owner_set = dict((v,k) for k,v in owner_set.iteritems())
+        for i in week:
+            print("Week " + str(i))
 
-            except:
-                owner_set = dict()
-
-            games = nflgame.games(year, week=week)
+            games = nflgame.games(year, week=i)
+            #print year
             stats = nflgame.combine_max_stats(games)
             plays = nflgame.combine_plays(games)
 
+            #print games
+
             for player in stats.punting():
-                #print week
+                    #print week
 
                 punt_name = player
                 team = player.team
                 punt_yards = player.punting_yds
-                punt_blocks = player.punting_blk
                 punt_under_20s = player.punting_i20
+                punt_blocks = player.punting_blk
                 punt_count = player.punting_tot
                 punt_touch_back = player.punting_touchback
                 punt_downs = player.puntret_downed
@@ -89,6 +82,38 @@ def run_stats_import(week_number, year):
                 returns = 0
                 holds = 0
                 misses = 0
+                fumbles = 0
+                interceptions = 0
+                first_downs = 0
+                passing_yds = 0
+                passing_tds = 0
+                rushing_yds = 0
+                rushing_tds = 0
+                touchdowns = 0
+                conduct = 0
+
+                for passing in stats.passing():
+                    if passing == player:
+                        passing_yds = passing.passing_yds
+                        passing_tds = passing.passing_tds
+
+                    else:
+                        passing_yds = 0
+                        passing_tds = 0
+
+                    #print passing_yards
+                    #print passing_tds
+
+                for rushing in stats.rushing():
+                    if rushing == player:
+                        rushing_yds = rushing.rushing_yds
+                        rushing_tds = rushing.rushing_tds
+                    else:
+                        rushing_yds = 0
+                        rushing_tds = 0
+
+                    #print rushing_yards
+                    #print rushing_tds
 
                 plays = nflgame.combine_plays(games)
                 #play = ''
@@ -148,31 +173,54 @@ def run_stats_import(week_number, year):
                             #print play
                             misses = misses + 1
 
+                    elif str(punt_name) in str(play) and "Punt formation" in str(play) and "No Play" not in str(play) and "Delay of Game" not in str(play):
+                        print str(play)
+                        first_down_character = str(play).find("and")
+                        remaining_string = str(play)[int(first_down_character)+4:]
+                        parentheses_character = remaining_string.find(")")
+                        remaining_string = remaining_string[:parentheses_character]
+                        yards_remaining = remaining_string
+
+                        yards_character = str(play).find("for ")
+                        remaining_string = str(play)[int(yards_character)+4:]
+                        yards_character = remaining_string.find("yards")
+                        remaining_string = remaining_string[:yards_character]
+                        yards_gained = remaining_string
+
+                        print yards_remaining
+                        print yards_gained
+
+                        if "PENALTY" in str(play) and "Unsportsmanlike Conduct" in str(play):
+                            if "PENALTY on {team}-{punter}".format(team = team, punter=punt_name) in str(play):
+                                conduct=conduct+1
+                        if "INTERCEPTED" in str(play):
+                            interceptions=interceptions+1
+                        elif "FUMBLES" in str(play):
+                            if "{punter} FUMBLES".format(punter=punt_name) in str(play):
+                                fumbles=fumbles+1
+                        elif ("pass" in str(play) or "right end ran" in str(play) or "left end ran" in str(play) or "up the middle" in str(play)) and "INTERCEPTED" not in str(play) and "incomplete" not in str(play):
+                            if int(yards_gained) >= int(yards_remaining) and yards_gained > 0:
+                                first_downs = first_downs + 1
+                            if "TOUCHDOWN" in str(play):
+                                touchdowns = touchdowns + 1
+
+                        print conduct
+                        print interceptions
+                        print fumbles
+                        print first_downs
+                        print touchdowns
+
+
+
+
                     else:
                         continue
 
-                #print str(punt_name) + " Holds: " + str(holds)
-
-                #print return_list
-                total_return_yards = sum(return_list)
-
-                owner = owner_set.get(str(player), "Free Agent")
-                #print owner
-
-                time.sleep(1)
-
-                # print(str(week) +", " + str(owner) +", "   + str(punt_name) +", " +  \
-                #      str(team) + ", " + str(punt_count) +", " + str(punt_yards) +", " + \
-                #      str(punt_blocks) +", " + str(punt_touch_back) +", " + str(fair_catch) +", " + \
-                #      str(out_of_bounds) +", " + str(punts_over_50) +", " + str(punts_over_60) +", " + \
-                #      str(punts_over_70) +", " + str(punt_under_20s) +", " + str(punts_under_10) +", " + \
-                #      str(punts_under_5) +", " + str(punts_under_2) +", " + str(returns) +", " + \
-                #      str(total_return_yards))
+                    total_return_yards = sum(return_list)
 
                 csv_data = list()
                 #Convert date to string
-                csv_data.append(week)
-                csv_data.append(str(owner))
+                csv_data.append(i)
                 csv_data.append(str(punt_name))
                 csv_data.append(str(team))
                 csv_data.append(punt_count)
@@ -192,7 +240,19 @@ def run_stats_import(week_number, year):
                 csv_data.append(total_return_yards)
                 csv_data.append(holds)
                 csv_data.append(misses)
+                csv_data.append(first_downs)
+                csv_data.append(touchdowns)
+                csv_data.append(fumbles)
+                csv_data.append(interceptions)
+                csv_data.append(conduct)
+
 
                 outputWriter.writerow(csv_data)
-
+    #
     data_csv.close
+
+
+season = 2017
+week_season = range(1,18)
+
+run_stats_import(week_season, season)

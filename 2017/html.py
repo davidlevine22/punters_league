@@ -123,7 +123,7 @@ def html_body(week, year):
 
                     </style></head>
                     <body>
-                        <font size=12>King is God. </font>
+                        <font size=12>The Playoffs Begin. </font>
                         <br>
                         <br>
                         <table width="510" style="width=500px;">

@@ -30,8 +30,8 @@ def send_email(weeks, year, message):
 
 
      FROM = 'davidlevine22@gmail.com'
-     TO = mailList
-     #TO = ['davidlevine@iheartmedia.com']
+     #TO = mailList
+     TO = ['davidlevine@iheartmedia.com']
      username = 'davidlevine22'
      password = open("password.txt", "r+")
      password = [i.strip() for i in password.readlines()]
@@ -327,7 +327,7 @@ def send_email(weeks, year, message):
 
      for week in weeks:
           xrow = 0
-          worksheet_name = 'Week {week}'.format(week=str(week))
+          worksheet_name = 'Week {week}'.format(week=str(week)) if week < 15 else 'QuarterFinals' if week == 15 else 'SemiFinals' if week == 16 else 'Finals' if week == 17 else 'Broken'
           worksheet = workbook.add_worksheet(worksheet_name)
           week_integer_header_format = worksheet.set_column('E:T', 10, integer)
           week_rank_header_format = worksheet.set_column('A:A', 5, rank)
