@@ -51,8 +51,11 @@ def run_stats_import(week, year):
 
         for i in week:
             print("Week " + str(i))
-
-            games = nflgame.games(year, week=i)
+            kind = 'REG' if i <= 17 else 'POST'
+            woke = i if i <=17 else i-17
+            #print kind
+            #print woke
+            games = nflgame.games(year, week=woke, kind=kind)
             #print year
             stats = nflgame.combine_max_stats(games)
             plays = nflgame.combine_plays(games)
@@ -187,8 +190,8 @@ def run_stats_import(week, year):
                         remaining_string = remaining_string[:yards_character]
                         yards_gained = remaining_string
 
-                        print yards_remaining
-                        print yards_gained
+                        #print yards_remaining
+                        #print yards_gained
 
                         if "PENALTY" in str(play) and "Unsportsmanlike Conduct" in str(play):
                             if "PENALTY on {team}-{punter}".format(team = team, punter=punt_name) in str(play):
@@ -204,11 +207,11 @@ def run_stats_import(week, year):
                             if "TOUCHDOWN" in str(play):
                                 touchdowns = touchdowns + 1
 
-                        print conduct
-                        print interceptions
-                        print fumbles
-                        print first_downs
-                        print touchdowns
+                        #print conduct
+                        #print interceptions
+                        #print fumbles
+                        #print first_downs
+                        #print touchdowns
 
 
 
