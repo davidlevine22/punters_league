@@ -1,0 +1,16 @@
+{'Julian': 'D.Colquitt',
+'Levine': 'L.Edwards',
+'Gillen': 'B.Nortman',
+'Fed': 'M.Palardy',
+'Looney': 'M.King',
+'Ralph': 'J.Hekker',
+'Pacillo': 'J.Berry',
+'Bandit': 'R.Sanchez',
+'Kane': 'M.Bosher',
+'Bagley': 'J.Ryan',
+'Zack': 'C.Schmidt',
+'Hardardt': 'B.Wing',
+'Taylor': 'B.Colquitt',
+"O'Leary": 'S.Lechler',
+'Stearns': 'R.Allen'
+             }

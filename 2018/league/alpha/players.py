@@ -115,7 +115,7 @@ def players(weeks, year):
                 csv_data.append(holds)
                 csv_data.append(misses)
                 csv_data.append(first_downs)
-                csv_data.append(touchbacks)
+                csv_data.append(touchdowns)
                 csv_data.append(fumbles)
                 csv_data.append(interceptions)
                 csv_data.append(conduct)
