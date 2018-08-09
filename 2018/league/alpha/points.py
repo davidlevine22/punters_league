@@ -4,12 +4,38 @@ import re
 import csv
 import os
 
+file = "settings/points_system.txt"
+    #print file
+f = open(file,"r")
+point_set = eval(f.read())
+#print point_set
+Block_Points = point_set['Block']
+Touchbacks_Points = point_set['Touchback']
+Fair_Catches_Points = point_set['Fair_Catch']
+Out_of_Bounds_Points = point_set['Out_of_Bands']
+Fifty_Points = point_set['Fifty']
+Sixty_Points = point_set['Sixty']
+Seventy_Points = point_set['Seventy']
+Under_20_Points = point_set['Under_20']
+Under_10_Points = point_set['Under_10']
+Under_5_Points = point_set['Under_5']
+Yd_Line_Points = point_set['Yd_Line']
+holds_points = point_set['Hold']
+miss_points = point_set['Miss']
+first_down_points = point_set['First_Down']
+touch_down_points = point_set['Touch_Down']
+fumbles_points = point_set['Fumbles']
+interceptions_points = point_set['Interceptions']
+conduct_points = point_set['Conduct']
+punt_avg_points = point_set['PuntAvg']
+return_avg_points = point_set['ReturnAvg']
+
 def run_points(year):
 
 
     def Punt_Avg(punt_yard, punt):
         try:
-            points = (float(punt_yard)/float(punt)-45)*.1
+            points = (float(punt_yard)/float(punt)-45)*punt_avg_points
             return points
         except:
             points = 0
@@ -17,7 +43,7 @@ def run_points(year):
 
     def Return_Avg(return_yard, returns):
         try:
-            points = -(float(return_yard)/float(returns)-9)*.10
+            points = -(float(return_yard)/float(returns)-9)*return_avg_points
             return points
         except:
             points  = 0
@@ -39,29 +65,7 @@ def run_points(year):
     with open(read_file, "rb") as read_csv:
         write_file = 'data/points/season_{year}.csv'.format(year=year_string)
         with open(write_file, "wb") as write_csv:
-            file = "settings/points_system.txt"
-                #print file
-            f = open(file,"r")
-            point_set = eval(f.read())
-            #print point_set
-            Block_Points = point_set['Block']
-            Touchbacks_Points = point_set['Touchback']
-            Fair_Catches_Points = point_set['Fair_Catch']
-            Out_of_Bounds_Points = point_set['Out_of_Bands']
-            Fifty_Points = point_set['Fifty']
-            Sixty_Points = point_set['Sixty']
-            Seventy_Points = point_set['Seventy']
-            Under_20_Points = point_set['Under_20']
-            Under_10_Points = point_set['Under_10']
-            Under_5_Points = point_set['Under_5']
-            Yd_Line_Points = point_set['Yd_Line']
-            holds_points = point_set['Hold']
-            miss_points = point_set['Miss']
-            first_down_points = point_set['First_Down']
-            touch_down_points = point_set['Touch_Down']
-            fumbles_points = point_set['Fumbles']
-            interceptions_points = point_set['Interceptions']
-            conduct_points = point_set['Conduct']
+
 
             #Returns_Avg_Points = 0
 
@@ -181,7 +185,6 @@ def run_points(year):
 
 
 
-            #Punt_Avg_Points = Punt_Avg(200,40)
     write_csv.close
     read_csv.close
 
