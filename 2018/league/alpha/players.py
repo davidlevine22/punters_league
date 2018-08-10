@@ -11,7 +11,7 @@ def right(s, amount):
 
 def players(weeks, year):
     year_string = str(year)+right(str(year+1),2)
-    read_file = 'data/points/season_{year}.csv'.format(year=year_string)
+    read_file = 'data/points/punters_{year}.csv'.format(year=year_string)
     #print df
     write_file = 'data/points/players_{year}.csv'.format(year=year_string)
     with open(write_file, "wb") as write_csv:

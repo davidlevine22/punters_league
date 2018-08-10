@@ -63,7 +63,7 @@ def run_points(year):
     os.chdir(owd)
     #print os.path.abspath(os.curdir)
     with open(read_file, "rb") as read_csv:
-        write_file = 'data/points/season_{year}.csv'.format(year=year_string)
+        write_file = 'data/points/punters_{year}.csv'.format(year=year_string)
         with open(write_file, "wb") as write_csv:
 
 
