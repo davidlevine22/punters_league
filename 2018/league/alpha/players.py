@@ -1,4 +1,3 @@
-import nflgame
 import time
 import re
 import csv
