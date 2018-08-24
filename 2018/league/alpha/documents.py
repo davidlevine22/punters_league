@@ -139,245 +139,81 @@ def documents(weeks, year):
           else:
                continue
 
-    #  open_file = 'data/season/season_{year}.csv'.format(year=year_string)
-    #  with open(open_file, "rb") as data_csv:
-    #       writer = csv.reader(data_csv)
-    #       #headers = reader.next()
-    #       next(writer)
-    #
-    #  #open_csv.close()
-    #       worksheet_name = 'Weekly Stats'
-    #       worksheet = workbook.add_worksheet(worksheet_name)
-    #       xrow = 0
-    #       xrow = 0
-    #       #
-    #       stats_integer_header_format = worksheet.set_column('E:U', 10, integer)
-    #       stats_rank_header_format = worksheet.set_column('A:A', 7, rank)
-    #       stats_owner_header_format = worksheet.set_column('B:C', 11, rank)
-    #       stats_team_header_format = worksheet.set_column('D:D', 7, rank)
-    #       worksheet.write(xrow, xcol, "Week", stats_rank_header_format)
-    #       worksheet.write(xrow, xcol + 1, "Owner", stats_owner_header_format)
-    #       worksheet.write(xrow, xcol+2, "Punter", stats_owner_header_format)
-    #       worksheet.write(xrow, xcol+3, "Team", stats_team_header_format)
-    #       worksheet.write(xrow, xcol+4, "Punts", stats_team_header_format)
-    #       worksheet.write(xrow, xcol+5, "Yards", stats_team_header_format)
-    #       worksheet.write(xrow, xcol+6, "Blocks", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+7, "TB", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+8, "FC", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+9, "OB", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+10, "50+", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+11, "60+", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+12, "70+", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+13, "Under 20", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+14, "Under 10", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+15, "Under 5", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+16, "1 Yd Line", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+17, "Returns", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+18, "RY", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+19, "Holds", stats_integer_header_format)
-    #       worksheet.write(xrow, xcol+20, "Misses", stats_integer_header_format)
-    #       worksheet.freeze_panes(1,3)
-    #       xrow = 1
-    #       new_data_set = []
-    #       for a in writer:
-    #            #print a
-    #            row_integer = workbook.add_format()
-    #            row_integer.set_num_format('#,##0')
-    #            row_integer.set_align('center')
-    #            row_player = workbook.add_format()
-    #            row_player.set_align('center')
-    #            row_rank = workbook.add_format()
-    #            row_rank.set_align('center')
-    #            worksheet.write(xrow, xcol, int(a[0]), row_rank)
-    #            worksheet.write(xrow, xcol + 1, a[1], row_player)
-    #            worksheet.write(xrow, xcol+2, a[2], row_player)
-    #            worksheet.write(xrow, xcol+3, a[3], row_player)
-    #            worksheet.write(xrow, xcol+4, int(a[4]), row_integer)
-    #            worksheet.write(xrow, xcol+5, int(a[5]), row_integer)
-    #            worksheet.write(xrow, xcol+6, int(a[6]), row_integer)
-    #            worksheet.write(xrow, xcol+7, int(a[7]), row_integer)
-    #            worksheet.write(xrow, xcol+8, int(a[8]), row_integer)
-    #            worksheet.write(xrow, xcol+9, int(a[9]), row_integer)
-    #            worksheet.write(xrow, xcol+10, int(a[10]), row_integer)
-    #            worksheet.write(xrow, xcol+11, int(a[11]), row_integer)
-    #            worksheet.write(xrow, xcol+12, int(a[12]), row_integer)
-    #            worksheet.write(xrow, xcol+13, int(a[13]), row_integer)
-    #            worksheet.write(xrow, xcol+14, int(a[14]), row_integer)
-    #            worksheet.write(xrow, xcol+15, int(a[15]), row_integer)
-    #            worksheet.write(xrow, xcol+16, int(a[16]), row_integer)
-    #            worksheet.write(xrow, xcol+17, int(a[17]), row_integer)
-    #            worksheet.write(xrow, xcol+18, int(a[18]), row_integer)
-    #            worksheet.write(xrow, xcol+19, int(a[19]), row_integer)
-    #            worksheet.write(xrow, xcol+20, int(a[20]), row_integer)
-    #            xrow = xrow + 1
-    #            #print a
-    #            new_data_set.append(a)
-    #
-    # #read_csv.close()
-    #       #print data_set
-    #
-    #       data_frame = pd.DataFrame(new_data_set).convert_objects(convert_numeric=True)
-    #       data_frame = data_frame[data_frame[0] <= max(weeks)]
-    #       data_frame[3].replace(["JAC"],["JAX"],inplace=True)
-    #       #result_base = list(map(tuple, df.itertuples(index=True)))
-    #       #print data_frame[data_frame[3] == "B.Nortman",]
-    #       data_result = data_frame.groupby([2,3], as_index=False).sum()
-    #       data_result = list(map(tuple, data_result.itertuples(index=True)))
-    #       #print data_result
-    #
-    #       worksheet_name = 'Punter Stats'
-    #       worksheet = workbook.add_worksheet(worksheet_name)
-    #       xrow = 0
-    #       xrow = 0
-    #       punter_integer_header_format = worksheet.set_column('C:S', 10, integer)
-    #       punter_owner_header_format = worksheet.set_column('A:A', 11, rank)
-    #       punter_team_header_format = worksheet.set_column('B:B', 7, rank)
-    #       worksheet.write(xrow, xcol, "Punter", punter_owner_header_format)
-    #       worksheet.write(xrow, xcol+1, "Team", punter_team_header_format)
-    #       worksheet.write(xrow, xcol+2, "Punts", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+3, "Yards", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+4, "Blocks", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+5, "TB", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+6, "FC", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+7, "OB", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+8, "50+", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+9, "60+", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+10, "70+", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+11, "Under 20", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+12, "Under 10", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+13, "Under 5", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+14, "1 Yd Line", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+15, "Returns", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+16, "RY", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+17, "Holds", punter_integer_header_format)
-    #       worksheet.write(xrow, xcol+18, "Misses", punter_integer_header_format)
-    #
-    #       worksheet.freeze_panes(1,2)
-    #
-    #       xrow = 1
-    #       data_result = sorted(data_result, key=lambda x: x[1])
-    #       for a in data_result:
-    #            #print a
-    #            punter_row_integer = workbook.add_format()
-    #            punter_row_integer.set_num_format('#,##0')
-    #            punter_row_integer.set_align('center')
-    #            punter_row_player = workbook.add_format()
-    #            punter_row_player.set_align('center')
-    #            punter_row_rank = workbook.add_format()
-    #            punter_row_rank.set_align('center')
-    #            worksheet.write(xrow, xcol, a[1], punter_row_rank)
-    #            worksheet.write(xrow, xcol + 1, a[2], punter_row_player)
-    #            worksheet.write(xrow, xcol+2, int(a[4]), punter_row_player)
-    #            worksheet.write(xrow, xcol+3, int(a[5]), punter_row_player)
-    #            worksheet.write(xrow, xcol+4, int(a[6]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+5, int(a[7]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+6, int(a[8]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+7, int(a[9]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+8, int(a[10]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+9, int(a[11]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+10, int(a[12]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+11, int(a[13]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+12, int(a[14]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+13, int(a[15]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+14, int(a[16]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+15, int(a[17]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+16, int(a[18]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+17, int(a[19]), punter_row_integer)
-    #            worksheet.write(xrow, xcol+18, int(a[20]), punter_row_integer)
-    #            xrow = xrow + 1
-    #
-    #  #weeks = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
-    #  #print weeks
-    #  #print range(1,17)
-    #
-    #  for week in weeks:
-    #       xrow = 0
-    #       worksheet_name = 'Week {week}'.format(week=str(week)) if week < 15 else 'QuarterFinals' if week == 15 else 'SemiFinals' if week == 16 else 'Finals' if week == 17 else 'Broken'
-    #       worksheet = workbook.add_worksheet(worksheet_name)
-    #       week_integer_header_format = worksheet.set_column('E:T', 10, integer)
-    #       week_rank_header_format = worksheet.set_column('A:A', 5, rank)
-    #       week_owner_header_format = worksheet.set_column('B:C', 11, rank)
-    #       week_team_header_format = worksheet.set_column('D:D', 7, rank)
-    #       worksheet.write(xrow, xcol, "Rank", week_rank_header_format)
-    #       worksheet.write(xrow, xcol + 1, headers[1], week_owner_header_format)
-    #       worksheet.write(xrow, xcol + 2, headers[2], week_owner_header_format)
-    #       worksheet.write(xrow, xcol + 3, headers[3], week_team_header_format)
-    #       worksheet.write(xrow, xcol + 4, headers[4], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 5, "TB", week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 6, "FC", week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 7, "OB", week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 8, headers[8], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 9, headers[9], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 10, headers[10], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 11, headers[11], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 12, headers[12], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 13, headers[13], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 14, headers[14], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 15, headers[15], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 16, headers[16], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 17, headers[17], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 18, headers[18], week_integer_header_format)
-    #       worksheet.write(xrow, xcol + 19, headers[19], week_integer_header_format)
-    #       worksheet.freeze_panes(1,3)
-    #       xrow=1
-    #       rank_num = 1
-    #       data_set = sorted(data_set, key=lambda x: float(x[19]), reverse=True)
-    #       for line in data_set:
-    #
-    #            if int(line[0]) == int(week):
-    #                 #print line
-    #                 Week = line[0]
-    #                 Owner = line[1]
-    #                 Punter = line[2]
-    #                 Team = line[3]
-    #                 Blocks  = line[4]
-    #                 Touchbacks = line[5]
-    #                 Fair_Catches = line[6]
-    #                 Out_of_Bounds = line[7]
-    #                 Fifty = line[8]
-    #                 Sixty = line[9]
-    #                 Seventy = line[10]
-    #                 Under_20 = line[11]
-    #                 Under_10 = line[12]
-    #                 Under_5 = line[13]
-    #                 Yd_Line = line[14]
-    #                 Punt_Avg = line[15]
-    #                 Return_Avg = line[16]
-    #                 Holds = line[17]
-    #                 Misses = line[18]
-    #                 Total_Points = line[19]
-    #                 row_integer = workbook.add_format()
-    #                 row_integer.set_num_format('#,##0.00')
-    #                 row_integer.set_align('center')
-    #                 row_player = workbook.add_format()
-    #                 row_player.set_align('center')
-    #                 row_rank = workbook.add_format()
-    #                 row_rank.set_align('center')
-    #
-    #                 worksheet.write(xrow, xcol, rank_num, row_rank)
-    #                 worksheet.write(xrow, xcol + 1, Owner, row_player)
-    #                 worksheet.write(xrow, xcol + 2, Punter, row_player)
-    #                 worksheet.write(xrow, xcol + 3, Team, row_player)
-    #                 worksheet.write(xrow, xcol + 4, float(Blocks), row_integer)
-    #                 worksheet.write(xrow, xcol + 5, float(Touchbacks), row_integer)
-    #                 worksheet.write(xrow, xcol + 6, float(Fair_Catches), row_integer)
-    #                 worksheet.write(xrow, xcol + 7, float(Out_of_Bounds), row_integer)
-    #                 worksheet.write(xrow, xcol + 8, float(Fifty), row_integer)
-    #                 worksheet.write(xrow, xcol + 9, float(Sixty), row_integer)
-    #                 worksheet.write(xrow, xcol + 10, float(Seventy), row_integer)
-    #                 worksheet.write(xrow, xcol + 11, float(Under_20), row_integer)
-    #                 worksheet.write(xrow, xcol + 12, float(Under_10), row_integer)
-    #                 worksheet.write(xrow, xcol + 13, float(Under_5), row_integer)
-    #                 worksheet.write(xrow, xcol + 14, float(Yd_Line), row_integer)
-    #                 worksheet.write(xrow, xcol + 15, float(Punt_Avg), row_integer)
-    #                 worksheet.write(xrow, xcol + 16, float(Return_Avg), row_integer)
-    #                 worksheet.write(xrow, xcol + 17, float(Holds), row_integer)
-    #                 worksheet.write(xrow, xcol + 18, float(Misses), row_integer)
-    #                 worksheet.write(xrow, xcol + 19, float(Total_Points), row_integer)
-    #                 xrow = xrow + 1
-    #                 rank_num = rank_num + 1
+     worksheet_name = 'Weekly Stats'
+     worksheet = workbook.add_worksheet(worksheet_name)
+     xrow = 0
+     result = df
+     result = list(map(tuple, result.itertuples(index=True)))
+     stats_integer_header_format = worksheet.set_column('E:Z', 11, integer)
+     stats_rank_header_format = worksheet.set_column('A:A', 7, rank)
+     stats_owner_header_format = worksheet.set_column('B:C', 11, rank)
+     stats_team_header_format = worksheet.set_column('D:D', 7, rank)
+     worksheet.write(xrow, xcol, "Week", stats_rank_header_format)
+     worksheet.write(xrow, xcol + 1, "Owner", stats_owner_header_format)
+     worksheet.write(xrow, xcol + 2, "Punter", stats_owner_header_format)
+     worksheet.write(xrow, xcol + 3, "Team", stats_team_header_format)
+     worksheet.write(xrow, xcol + 4, "Blocks", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 5, "TB", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 6, "FC", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 7, "OB", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 8, "50+", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 9, "60+", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 10, "70+", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 11, "Under 20", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 12, "Under 10", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 13, "Under 5", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 14, "1 Yd Line", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 15, "Punt Avg.", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 16, "Return Avg.", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 17, "Holds", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 18, "Misses", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 19, "First Downs", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 20, "Touchdowns", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 21, "Fumbles", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 22, "Interceptions", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 23, "Conduct", stats_integer_header_format)
+     worksheet.write(xrow, xcol + 24, "Total Points", stats_integer_header_format)
+     #worksheet.freeze_panes(1, 4)
+     xrow = 1
+     for a in result:
 
-
+          #print a
+          row_float = workbook.add_format()
+          row_float.set_num_format('#,##0.00')
+          row_float.set_align('center')
+          row_integer = workbook.add_format()
+          row_integer.set_num_format('#,##0')
+          row_integer.set_align('center')
+          row_player = workbook.add_format()
+          row_player.set_align('center')
+          row_rank = workbook.add_format()
+          row_rank.set_align('center')
+          worksheet.write(xrow, xcol, int(a[1]), row_rank)
+          worksheet.write(xrow, xcol + 1, a[2], row_player)
+          worksheet.write(xrow, xcol + 2, a[3], row_player)
+          worksheet.write(xrow, xcol + 3, a[4], row_player)
+          worksheet.write(xrow, xcol + 4, a[5], row_float)
+          worksheet.write(xrow, xcol + 5, a[6], row_float)
+          worksheet.write(xrow, xcol + 6, a[7], row_float)
+          worksheet.write(xrow, xcol + 7, a[8], row_float)
+          worksheet.write(xrow, xcol + 8, a[9], row_float)
+          worksheet.write(xrow, xcol + 9, a[10], row_float)
+          worksheet.write(xrow, xcol + 10, a[11], row_float)
+          worksheet.write(xrow, xcol + 11, a[12], row_float)
+          worksheet.write(xrow, xcol + 12, a[13], row_float)
+          worksheet.write(xrow, xcol + 13, a[14], row_float)
+          worksheet.write(xrow, xcol + 14, a[15], row_float)
+          worksheet.write(xrow, xcol + 15, a[16], row_float)
+          worksheet.write(xrow, xcol + 16, a[17], row_float)
+          worksheet.write(xrow, xcol + 17, a[18], row_float)
+          worksheet.write(xrow, xcol + 18, a[19], row_float)
+          worksheet.write(xrow, xcol + 19, a[20], row_float)
+          worksheet.write(xrow, xcol + 20, a[21], row_float)
+          worksheet.write(xrow, xcol + 21, a[22], row_float)
+          worksheet.write(xrow, xcol + 22, a[23], row_float)
+          worksheet.write(xrow, xcol + 23, a[24], row_float)
+          worksheet.write(xrow, xcol + 24, a[25], row_float)
+          xrow = xrow + 1
      workbook.close()
 
 
