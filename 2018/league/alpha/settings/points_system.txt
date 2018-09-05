@@ -1,7 +1,7 @@
 {'Block': -3,
 'Touchback': .4,
 'Fair_Catch': .25,
-'Out_of_Bands': .1,
+'Out_of_Bounds': .1,
 'Fifty': 1,
 'Sixty': .75,
 'Seventy': .5,

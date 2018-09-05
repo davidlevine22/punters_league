@@ -211,7 +211,7 @@ def send_email(weeks, year, message):
           worksheet.write(xrow, xcol+18, "RY", stats_integer_header_format)
           worksheet.write(xrow, xcol+19, "Holds", stats_integer_header_format)
           worksheet.write(xrow, xcol+20, "Misses", stats_integer_header_format)
-          worksheet.freeze_panes(1,3)
+          worksheet.freeze_panes(1,2)
           xrow = 1
           new_data_set = []
           for a in writer:
