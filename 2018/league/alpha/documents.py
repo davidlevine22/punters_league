@@ -30,7 +30,6 @@ def documents(weeks, year):
      year_string = str(year)+right(str(year+1),2)
      data_set = []
 
-
      read_file = 'data/points/players_{year}.csv'.format(year=year_string)
      with open(read_file, "rb") as read_csv:
 
@@ -52,7 +51,7 @@ def documents(weeks, year):
 
      workbook_name = 'data/standings/{year}_week_{week}_standings.xlsx'.format(year=year, week=max(weeks))
      #frame_writer = pd.ExcelWriter(workbook_name, engine='xlsxwriter')
-     workbook = xlsxwriter.Workbook(workbook_name)
+     workbook = xlsxwriter.Workbook(workbook_name,  {'strings_to_numbers':  True})
 
      number = 1
 
@@ -145,6 +144,7 @@ def documents(weeks, year):
           else:
                continue
 
+     ##Points System
      worksheet_name = 'Points System'
      xrow = 0
      worksheet = workbook.add_worksheet(worksheet_name)
@@ -159,6 +159,50 @@ def documents(weeks, year):
           worksheet.write(xrow, xcol + 1, point_set[i], row_rank)
           xrow = 1 + xrow
 
+     ##Weekly Player Stats
+     worksheet_name = 'Weekly Player Stats'
+     worksheet = workbook.add_worksheet(worksheet_name)
+     xrow=0
+     read_file = 'data/stats/punters_{year}.csv'.format(year=year_string)
+     data_set_2 = []
+     with open(read_file, "rb") as read_csv:
+
+          reader = csv.reader(read_csv)
+          headers_2 = reader.next()
+          #next(reader)
+          #
+          for line in reader:
+               #print line
+               data_set_2.append(line)
+
+     read_csv.close()
+     col_adjustment = 0
+     worksheet.set_column('A:C', 10, integer)
+     help = worksheet.set_column('D:Z', 13, integer)
+     for h in headers_2:
+
+          worksheet.write(xrow, xcol + col_adjustment, h, help)
+          col_adjustment = col_adjustment + 1
+
+     xrow = 1
+     col_adjustment = 0
+     row_adjustment = 0
+     row_integer = workbook.add_format()
+     row_integer.set_num_format('#,##0')
+     row_integer.set_align('center')
+     for line in data_set_2:
+          col_adjustment = 0
+          for i in line:
+               try:
+                    worksheet.write_number(xrow + row_adjustment, xcol + col_adjustment, i, row_integer)
+               except:
+                    worksheet.write(xrow + row_adjustment, xcol + col_adjustment, i, row_integer)
+               col_adjustment = col_adjustment + 1
+          row_adjustment = row_adjustment + 1
+
+
+
+     ##Weekly Player Points
      worksheet_name = 'Weekly Player Points'
      worksheet = workbook.add_worksheet(worksheet_name)
      xrow = 0
@@ -244,7 +288,7 @@ def documents(weeks, year):
           xrow = 0
           worksheet_name = 'Week {week}'.format(week=str(week)) if week < 15 else 'QuarterFinals' if week == 15 else 'SemiFinals' if week == 16 else 'Finals' if week == 17 else 'Broken'
           worksheet = workbook.add_worksheet(worksheet_name)
-          week_integer_header_format = worksheet.set_column('E:Z', 10, integer)
+          week_integer_header_format = worksheet.set_column('E:Z', 11, integer)
           week_rank_header_format = worksheet.set_column('A:A', 5, rank)
           week_owner_header_format = worksheet.set_column('B:C', 11, rank)
           week_team_header_format = worksheet.set_column('D:D', 7, rank)
@@ -278,6 +322,7 @@ def documents(weeks, year):
           worksheet.freeze_panes(1,4)
           xrow=1
           rank_num = 1
+
           data_set = sorted(data_set, key=lambda x: float(x[24]), reverse=True)
           for line in data_set:
 
