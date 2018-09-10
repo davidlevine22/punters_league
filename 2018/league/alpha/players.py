@@ -130,5 +130,5 @@ def players(weeks, year):
     #read_csv.close
 
 
-week_season = range(1,18)
-players(week_season, 2017)
+week_season = range(1,2)
+players(week_season, 2018)

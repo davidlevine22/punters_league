@@ -208,4 +208,4 @@ def run_stats_import(week_number, year):
 season = 2017
 week_season = range(1,11)
 
-#run_stats_import(week_season, season)
+run_stats_import(week_season, season)

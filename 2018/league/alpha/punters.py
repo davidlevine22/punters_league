@@ -188,4 +188,4 @@ def run_points(year):
     read_csv.close
 
 
-run_points(2017)
+run_points(2018)

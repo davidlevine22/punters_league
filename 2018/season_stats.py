@@ -55,7 +55,7 @@ def run_stats_import(week, year):
             woke = i if i <=17 else i-17
             #print kind
             #print woke
-            games = nflgame.games(year, week=woke, kind=kind)
+            games = nflgame.games(year, week=i)
             #print year
             stats = nflgame.combine_max_stats(games)
             plays = nflgame.combine_plays(games)
@@ -255,7 +255,7 @@ def run_stats_import(week, year):
     data_csv.close
 
 
-season = 2017
-week_season = range(1,18)
+season = 2018
+week_season = range(1,2)
 
 run_stats_import(week_season, season)
