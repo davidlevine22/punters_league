@@ -2,6 +2,7 @@ import time
 import re
 import csv
 import os
+from shutil import copyfile
 
 file = "settings/points_system.txt"
     #print file
@@ -60,13 +61,13 @@ def run_points(year):
 
     read_file = os.path.abspath(os.curdir) + '/data/season/season_{year}.csv'.format(year=year_string)
     os.chdir(owd)
+    write_file_2 = 'data/stats/punters_{year}.csv'.format(year=year_string)
     #print os.path.abspath(os.curdir)
+    copyfile(read_file, write_file_2)
     with open(read_file, "rb") as read_csv:
         write_file = 'data/points/punters_{year}.csv'.format(year=year_string)
+        #write_file_2 = 'data/stats/punters_{year}.csv'.format(year=year_string)
         with open(write_file, "wb") as write_csv:
-
-
-            #Returns_Avg_Points = 0
 
             outputWriter = csv.writer(write_csv, delimiter=',')
 

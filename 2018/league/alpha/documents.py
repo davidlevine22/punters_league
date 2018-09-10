@@ -159,11 +159,15 @@ def documents(weeks, year):
           worksheet.write(xrow, xcol + 1, point_set[i], row_rank)
           xrow = 1 + xrow
 
-     worksheet_name = 'Weekly Player Stats'
+     worksheet_name = 'Weekly Player Points'
      worksheet = workbook.add_worksheet(worksheet_name)
      xrow = 0
      result = df
      result = list(map(tuple, result.itertuples(index=True)))
+     #print result
+
+     result = sorted(result, key=lambda x: (x[25]), reverse=True)
+     #print result[0][25]
 
      stats_integer_header_format = worksheet.set_column('E:Z', 11, integer)
      stats_rank_header_format = worksheet.set_column('A:A', 7, rank)
