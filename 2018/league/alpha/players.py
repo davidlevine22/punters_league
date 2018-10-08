@@ -49,18 +49,27 @@ def players(weeks, year):
             df = pd.read_csv(read_file)
             df = df[df['Week'] == i]
             df = df.values.tolist()
+            owner_set = []
 
             try:
                 file = "roster/{year_number}/week{week_number}.txt".format(week_number=i, year_number = year)
-                #print file
+
+                #print i
+                #print year
+                print file
                 f = open(file,"r")
                 owner_set = eval(f.read())
+
+                #print owner_set
                 #print owner_set
                 owner_set = dict((v,k) for k,v in owner_set.iteritems())
+                #print owner_set
 
-
+            #except Exception as e:
+            #    print(e)
             except:
                 owner_set = dict()
+                print "oops"
                 #print owner_set
 
             for line in df:
@@ -130,5 +139,5 @@ def players(weeks, year):
     #read_csv.close
 
 
-week_season = range(1,2)
+week_season = range(1,6)
 players(week_season, 2018)
