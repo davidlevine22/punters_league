@@ -391,4 +391,4 @@ def documents(weeks, year):
      workbook.close()
 
 
-documents(range(1, 6), 2018)
+documents(range(1, 17), 2018)

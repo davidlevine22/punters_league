@@ -1,0 +1,15 @@
+{'Julian': "P.O'Donnell",
+'Looney': 'L.Cooke',
+'Hardardt': 'B.Kern',
+'Stayman': 'A.Lee',
+'Levine': 'M.Dickson',
+'Ralph': 'B.Colquitt',
+'Bagley': 'J.Hekker',
+'Gillen': 'T.Morstead',
+"O'Leary": 'T.Daniel',
+'Fed': 'M.Haack',
+'Pacillo': 'L.Edwards',
+'Taylor' : 'R.Sanchez',
+'Miles': 'M.Wile',
+'Spencer': 'C.Schmidt'
+             }

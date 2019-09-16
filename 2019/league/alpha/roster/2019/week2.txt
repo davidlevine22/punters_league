@@ -1,0 +1,11 @@
+{'Julian': 'L.Edwards',
+'Hardardt': 'B.Kern',
+'Stayman': 'A.Lee',
+'Levine': 'B.Pinion',
+'Ralph': 'M.Haack',
+'Bagley': 'T.Morstead',
+"O'Leary": 'T.Daniel',
+'Fed': 'R.Dixon',
+'Pacillo': 'R.Sanchez',
+'Taylor' : 'T.Way'
+             }
